@@ -16,7 +16,7 @@
     ],
     "buildDirectory": "\\\\10.10.1.12\\totvs\\erp\\especificos",
     "dbConnections": [],
-    "numThreads": 2,
+    "numThreads": 1,
     "procedures": [],
     "profiles": []
 }

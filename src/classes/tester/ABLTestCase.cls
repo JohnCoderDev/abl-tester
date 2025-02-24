@@ -1,10 +1,10 @@
 block-level on error undo, throw.
-using ablc.third.tester.* from propath.
-using ablc.third.tester.errors.* from propath.
-using ablc.third.tester.interfaces.* from propath.
+using classes.tester.* from propath.
+using classes.tester.errors.* from propath.
+using classes.tester.interfaces.* from propath.
 using progress.json.ObjectModel.* from propath.
 
-class ablc.third.tester.ABLTestCase inherits ABLAsserter abstract implements ITestObject:
+class classes.tester.ABLTestCase inherits ABLAsserter abstract implements ITestObject:
     define public property totalRunned as int64 get. set.
     define public property totalSuccess as int64 get. set.
     define public property totalFailed as int64 get. set.

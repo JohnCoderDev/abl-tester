@@ -1,7 +1,7 @@
 block-level on error undo, throw.
-using ablc.third.tester.errors.* from propath.
+using classes.tester.errors.* from propath.
 
-class ablc.third.tester.ABLAsserter:
+class classes.tester.ABLAsserter:
     method public logical assertTrue(pExpression as logical):
         if not pExpression then do:
             return error new ABLAssertionError("expected expression to be 'TRUE' but is 'FALSE'").

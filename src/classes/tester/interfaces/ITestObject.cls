@@ -1,4 +1,4 @@
-interface ablc.third.tester.interfaces.ITestObject:
+interface classes.tester.interfaces.ITestObject:
     define public property totalRunned as int64 get. set.
     define public property totalSuccess as int64 get. set.
     define public property totalFailed as int64 get. set.

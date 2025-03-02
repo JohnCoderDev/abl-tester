@@ -5,7 +5,7 @@ API for unit testing your code in ABL.
 - download the source code, compile it and put somewhere in your propath
 - make a new class that inherits `classes.tester.ABLTestCase`, for example:
 
-```
+```progress
 class your.path.ExampleTestCase inherits classes.tester.ABLTestCase:
   // mandatory to have even if empty 
   method public void setup():
@@ -18,7 +18,7 @@ end class.
 
 - make some methods for the tests cases
 
-```
+```progress
 class your.path.ExampleTestCase inherits classes.tester.ABLTestCase:
   ...
 
@@ -40,7 +40,7 @@ end class.
 
 - in a `.p` file, make an instance of the `ABLTestCollection` class and run the tests
 
-```
+```progress
 // run-tests.p
 define variable testRunner as classes.tester.ABLTestCollection.
 

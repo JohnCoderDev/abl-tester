@@ -1,10 +1,10 @@
 block-level on error undo, throw.
-using classes.tester.* from propath.
-using classes.tester.errors.* from propath.
-using classes.tester.interfaces.* from propath.
-using progress.json.ObjectModel.* from propath.
+using classes.Tester.* from propath.
+using classes.Tester.Errors.* from propath.
+using classes.Tester.Interfaces.* from propath.
+using Progress.Json.ObjectModel.* from propath.
 
-class classes.tester.ABLTestCase inherits ABLAsserter abstract implements ITestObject:
+class classes.Tester.ABLTestCase inherits ABLAsserter abstract implements ITestObject:
     define public property totalRunned as int64 get. set.
     define public property totalSuccess as int64 get. set.
     define public property totalFailed as int64 get. set.
@@ -30,8 +30,8 @@ class classes.tester.ABLTestCase inherits ABLAsserter abstract implements ITestO
     
     method public ABLTestCase runTests(pPattern as character):
         clearTestsResults().
-        define variable currentMethod as progress.reflect.method.
-        define variable methods as progress.reflect.method extent.
+        define variable currentMethod as Progress.Reflect.Method.
+        define variable methods as Progress.Reflect.Method extent.
         define variable ix as integer no-undo.
         
         assign methods = this-object:getClass():getMethods().
@@ -45,7 +45,7 @@ class classes.tester.ABLTestCase inherits ABLAsserter abstract implements ITestO
                
                 assign
                     totalRunned = totalRunned + 1
-                    testsResults.className = currentMethod:originatingClass:typeName
+                    testsResults.ClassName = currentMethod:originatingClass:typeName
                     testsResults.methodName = currentMethod:name
                     testsResults.timestampStart = now.
                     
@@ -53,7 +53,7 @@ class classes.tester.ABLTestCase inherits ABLAsserter abstract implements ITestO
                     return error new ABLTestCaseWithParametersError().
                 end.
                 
-                currentMethod:invoke(this-object, new progress.lang.parameterList(0)).
+                currentMethod:invoke(this-object, new Progress.Lang.ParameterList(0)).
                 
                 assign
                     totalSuccess = totalSuccess + 1
@@ -69,7 +69,7 @@ class classes.tester.ABLTestCase inherits ABLAsserter abstract implements ITestO
                     testsResults.lastErrorCode = objAssertionError:getMessageNum(1).
             end catch.
             
-            catch objError as progress.lang.error:
+            catch objError as Progress.Lang.Error:
                 define variable iy as integer no-undo.
                 
                 assign testsResults.testResult = "error".

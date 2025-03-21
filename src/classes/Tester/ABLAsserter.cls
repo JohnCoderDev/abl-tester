@@ -1,7 +1,7 @@
 block-level on error undo, throw.
-using classes.tester.errors.* from propath.
+using classes.Tester.Errors.* from propath.
 
-class classes.tester.ABLAsserter:
+class classes.Tester.ABLAsserter:
     method public logical assertTrue(pExpression as logical):
         if not pExpression then do:
             return error new ABLAssertionError("expected expression to be 'TRUE' but is 'FALSE'").
@@ -278,7 +278,7 @@ class classes.tester.ABLAsserter:
     
     // classes
     method public logical assertIsInstance(
-        pObject as progress.lang.object,
+        pObject as Progress.Lang.Object,
         pExpectedType as character
     ):
         if pObject:getClass():typeName <> pExpectedType then
@@ -290,28 +290,28 @@ class classes.tester.ABLAsserter:
     end method.
     
     method public logical assertThrow(
-        pObject as progress.lang.object,
+        pObject as Progress.Lang.Object,
         pMethodName as character
     ):
         do on error undo, throw:
-            define variable fakeParams as progress.lang.parameterList.
-            assign fakeParams = new progress.lang.ParameterList(0).
+            define variable fakeParams as Progress.Lang.ParameterList.
+            assign fakeParams = new Progress.Lang.ParameterList(0).
             
             pObject:getClass():getMethod(pMethodName, fakeParams):invoke(pObject, fakeParams).
             return error new ABLAssertionError(
                 "expected method '" + pMethodName + "' of class '" 
                 + pObject:getClass():typeName + "'to throw an error, but it doesn't"
             ).
-            catch o as progress.lang.error:
+            catch o as Progress.Lang.Error:
                 return true.
             end.
         end.
     end method.
     
     method public logical assertThrow(
-        pObject  as progress.lang.object,
+        pObject  as Progress.Lang.Object,
         pMethodName as character, 
-        pParams as progress.lang.parameterList
+        pParams as Progress.Lang.ParameterList
     ):
         do on error undo, throw:
             pObject:getClass():getMethod(pMethodName, pParams):invoke(pObject, pParams).
@@ -319,16 +319,16 @@ class classes.tester.ABLAsserter:
                 "expected method '" + pMethodName + "' of class '" 
                 + pObject:getClass():typeName +  "' to throw an error, but it doesn't"
             ).
-            catch o as progress.lang.error:
+            catch o as Progress.Lang.Error:
                 return true.
             end.
         end.
     end method.
     
     method public logical assertThrow(
-        pObject as progress.lang.object,
+        pObject as Progress.Lang.Object,
         pMethodName as character,
-        pParams as progress.lang.parameterList,
+        pParams as Progress.Lang.ParameterList,
         pExpectedError as character
     ):
         do on error undo, throw:
@@ -337,7 +337,7 @@ class classes.tester.ABLAsserter:
                 "expected method '" + pMethodName + "' of class '" + 
                 pObject:getClass():typeName + "' to throw an error of type '" + pExpectedError + "', but it doesn't"
             ).
-            catch objError as progress.lang.error:
+            catch objError as Progress.Lang.Error:
                 if objError:getClass():typeName <> pExpectedError then
                     return error new ABLAssertionError(
                         "expected method '" + pMethodName + "' of class '"  

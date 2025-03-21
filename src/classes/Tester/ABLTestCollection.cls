@@ -1,10 +1,10 @@
 block-level on error undo, throw.
-using classes.tester.* from propath.
-using classes.tester.errors.* from propath.
-using classes.tester.interfaces.* from propath.
-using progress.json.ObjectModel.* from propath.
+using classes.Tester.* from propath.
+using classes.Tester.Errors.* from propath.
+using classes.Tester.Interfaces.* from propath.
+using Progress.Json.ObjectModel.* from propath.
 
-class classes.tester.ABLTestCollection implements ITestObject:
+class classes.Tester.ABLTestCollection implements ITestObject:
     define public property totalRunned as int64 get. set.
     define public property totalSuccess as int64 get. set.
     define public property totalFailed as int64 get. set.
@@ -25,14 +25,14 @@ class classes.tester.ABLTestCollection implements ITestObject:
     define private temp-table tests
         field testGroup as character
         field testClass as character
-        field testObject as progress.lang.object
+        field testObject as Progress.Lang.Object
         index idxUnique as primary unique testGroup testClass.
     
-    method public ABLTestCollection addTest(pObject as progress.lang.object):
+    method public ABLTestCollection addTest(pObject as Progress.Lang.Object):
         return addTest(pObject, "default").
     end method.
     
-    method public ABLTestCollection addTest(pObject as progress.lang.object, pGroup as character):
+    method public ABLTestCollection addTest(pObject as Progress.Lang.Object, pGroup as character):
         if pGroup = ? or pGroup = "" then do:
             return error new ABLTestGroupCannotBeNullOrEmpty().
         end.
@@ -58,7 +58,7 @@ class classes.tester.ABLTestCollection implements ITestObject:
         assign 
             tests.testGroup = pGroup
             tests.testClass = pName
-            tests.testObject = progress.lang.class:getClass(pName):new().
+            tests.testObject = Progress.Lang.Class:getClass(pName):new().
         return this-object.    
     end method.
     
@@ -193,7 +193,7 @@ class classes.tester.ABLTestCollection implements ITestObject:
             copy-lob from tableHtml to file pPath.
             return true.
             
-            catch objError as progress.lang.error:
+            catch objError as Progress.Lang.Error:
                 return false.
             end catch.
         end.

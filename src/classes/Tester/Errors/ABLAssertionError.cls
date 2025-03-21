@@ -1,7 +1,7 @@
 block-level on error undo, throw.
-using progress.lang.AppError.
+using Progress.Lang.AppError.
 
-class classes.tester.errors.ABLAssertionError inherits AppError:
+class classes.Tester.Errors.ABLAssertionError inherits AppError:
     constructor ABLAssertionError(pMessage as character):
         addMessage(pMessage, -4000).
     end constructor.

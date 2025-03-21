@@ -1,7 +1,7 @@
 block-level on error undo, throw.
-using classes.tester.interfaces.* from propath.
+using classes.Tester.Interfaces.* from propath.
 
-class classes.tester.ABLTestResultsTableHtmlSerializer:
+class classes.Tester.ABLTestResultsTableHtmlSerializer:
     method public static longchar serializeTestsTable(pTestObject as ITestObject):
         define variable htmlTable as longchar no-undo.
         assign htmlTable = '

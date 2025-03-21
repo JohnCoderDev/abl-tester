@@ -55,3 +55,11 @@ testRunner
   :runTests()
   :writeFile("C:\temp\tests-results.html"). // writes the results to a html table
 ```
+
+## Using the CLI (Windows)
+In order to use the CLI run the script [install-ablt](./src/cli/install-ablt.bat) as administrator.
+Check if it's installed running the following command:
+
+```
+> ablt -h
+```

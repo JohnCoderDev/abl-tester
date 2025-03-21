@@ -1,2 +1,3 @@
 .builder/
 openedge-project.json
+build-prod.json

@@ -1,3 +1,5 @@
 .builder/
 openedge-project.json
 build-prod.json
+ablt-tester-log.log
+ablc-compiler-log.log

@@ -1,0 +1,10 @@
+
+USAGE
+	install-ablt [-h]
+		display this help in the screen
+
+	install-ablc [-i]
+		try to install ablt in your environment
+
+	install-ablt [-u]
+		try to update or install the ablt in your environment

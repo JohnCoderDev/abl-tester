@@ -1,0 +1,49 @@
+
+USAGE
+	ablt [-h | --help]
+		displays this help
+
+	ablt [-t <test-case.cls> | --test-case <test-case.cls>] [...OPTIONS]
+		specify the test case file that you want ot 
+	
+	ablt [[-d <path-folder> | --discover <path-folder>] [ -f <pattern> | --find <pattern> ]] [...OPTIONS]
+		if this parameter is specified, the script will try to find every class file that matches
+		the pattern. If not pattern is specified, it's automatically settled to "*TestCase.cls".
+
+OPTIONS
+	-ininame	path to the .ini file
+	-p		extra procedures to run before running the test script
+	--html		specify the name of the html output file 
+	--json		specify the name of the json output file 
+	-n, --not-open	does not open the html file
+	-pf 		full path to the parameter file
+	-pf1 		try to use the value of %oepf1% environment variable as argument to -pf
+	-pf2 		try to use the value of %oepf2% environment variable as argument to -pf
+	-log 		specify the log file name of the test (default `ablc-tester-log.log`)
+	-q		if the parameter is present, it does not show the log in the screen after finishing the process
+
+
+SETUP
+	you might want to setup an environment variable %oeini% to automatically pass an ini file to
+	ablt.bat. You can to that with the following command as administrator:
+
+	```
+		setx /M oeini "<path-to-ini-file>"
+	```
+
+	you also may want to setup a environment variable to automatically pass some defaults procedures
+	when executing the ablt.bat. In this case, you will setup %oedcs%:
+
+	```
+		setx /M oedcs "<path-to-scripts>"
+	```
+	
+	**IMPORTANT**: if some procedure is not found by the program, it is ignored and the program
+	continues its normal execution
+
+	you can define default `.pf` file as well:
+
+	```
+		setx /M oedpf "<path-to-pf-file>"
+	```
+

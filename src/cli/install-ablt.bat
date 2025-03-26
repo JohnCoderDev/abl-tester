@@ -12,7 +12,7 @@ if errorlevel 2 (
 goto GETOPTS
 
 :HELP
-powershell -c $(get-content "%~dp0help-install.txt")
+powershell -c $(get-content "%~dp0help-install.txt"^)
 goto PROGRAMEND
 
 :INSTALL

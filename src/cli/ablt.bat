@@ -18,9 +18,9 @@ goto GETOPTS
 :HELP
 
 if exist "%abltInstallDir%\help.txt" (
-	powershell -c $(get-content "%abltInstallDir%\help.txt")
+	powershell -c $(get-content "%abltInstallDir%\help.txt"^)
 ) else (
-	powershell -c $(get-content "%~dp0help.txt")
+	powershell -c $(get-content "%~dp0help.txt"^)
 )
 goto PROGRAMEND
 
@@ -172,7 +172,7 @@ if "%extraProcedures%" == "" (
 
 %programCaller% -b -p %testerScript% -param %testerTestCaseFullPath%;%testerTestCaseRelativePath%;%testerDiscoverDir%;%testerDiscoverPattern%;%testerLogOutput%;%htmlOutputPath%;%jsonOutputPath%,%extraProcedures% %additionalArgs%
 if %quiet% == 0 if exist %testerLogOutput% (
-	powershell -c $(get-content %testerLogOutput%)
+	powershell -c $(get-content "%testerLogOutput%"^)
 )
 if %openHtmlFile% == 1 if exist "%htmlOutputPath%" "%htmlOutputPath%"
 goto PROGRAMEND

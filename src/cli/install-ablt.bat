@@ -8,10 +8,11 @@ if errorlevel 2 (
 	goto PROGRAMEND
 )
 
-goto GETOPTIONS
+
+goto GETOPTS
 
 :HELP
-cat "%~dp0help-install.txt"
+powershell -c $(get-content "%~dp0help-install.txt")
 goto PROGRAMEND
 
 :INSTALL
@@ -38,7 +39,7 @@ rmdir tmp
 
 goto PROGRAMEND
 
-:GETOPTIONS
+:GETOPTS
 
 if /I "%1" == "-u" (
 	mkdir %~dp0^tmp >nul 2>&1

@@ -13,18 +13,18 @@ if not exist %abltInstallDir% (
 	goto PROGRAMEND
 )
 
-goto GETOPTIONS
+goto GETOPTS
 
 :HELP
 
 if exist "%abltInstallDir%\help.txt" (
-	cat "%abltInstallDir%\help.txt"
+	powershell -c $(get-content "%abltInstallDir%\help.txt")
 ) else (
-	cat "%~dp0help.txt"
+	powershell -c $(get-content "%~dp0help.txt")
 )
 goto PROGRAMEND
 
-:GETOPTIONS
+:GETOPTS
 if /I "%1" == "-h" (
 	goto HELP
 ) else if /I "%1" == "--help" (
@@ -119,7 +119,7 @@ if /I "%1" == "" (
 	goto RUNCOMPILATIONCMD
 )
 
-goto GETOPTIONS
+goto GETOPTS
 
 :RUNCOMPILATIONCMD
 if not exist %testerScript% (
@@ -172,7 +172,7 @@ if "%extraProcedures%" == "" (
 
 %programCaller% -b -p %testerScript% -param %testerTestCaseFullPath%;%testerTestCaseRelativePath%;%testerDiscoverDir%;%testerDiscoverPattern%;%testerLogOutput%;%htmlOutputPath%;%jsonOutputPath%,%extraProcedures% %additionalArgs%
 if %quiet% == 0 if exist %testerLogOutput% (
-	cat %testerLogOutput%
+	powershell -c $(get-content %testerLogOutput%)
 )
 if %openHtmlFile% == 1 if exist "%htmlOutputPath%" "%htmlOutputPath%"
 goto PROGRAMEND

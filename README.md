@@ -8,10 +8,10 @@ API for unit testing your code in ABL.
 ```progress
 class your.path.ExampleTestCase inherits classes.tester.ABLTestCase:
   // mandatory to have even if empty 
-  method public void setup():
+  method public override void setup():
   end method.
 
-  method public void teardown():
+  method public override void teardown():
   end method.
 end class.
 ```

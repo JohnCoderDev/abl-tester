@@ -21,7 +21,7 @@ class classes.Tester.ABLAsserter:
         pFirst as character,
         pSecond as character
     ):
-        if pFirst <> pSecond then
+        if compare(pFirst, '<>', pSecond, 'case-sensitive') then
             return error new ABLAssertionError("'" + pFirst + "' is not equal to '" + pSecond + "'").
         return true.
     end method.
@@ -76,7 +76,7 @@ class classes.Tester.ABLAsserter:
         pFirst as character,
         pSecond as character
     ):
-        if pFirst = pSecond then
+        if compare(pFirst, '=', pSecond, 'case-sensitive') then
             return error new ABLAssertionError("'" + pFirst + "' is equal to '" + pSecond + "'").
         return true.
     end method.
